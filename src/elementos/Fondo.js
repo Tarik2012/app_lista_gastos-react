@@ -4,16 +4,16 @@ import { ReactComponent as Puntos } from './../imagenes/puntos.svg';
 
 
 
-const Svg = styled.svg`
-    height: 50vh;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    z-index: 0;
-    path {
-        fill: rgba(135,182,194, .15);
-    }
-`;
+// const Svg = styled.svg`
+//     height: 50vh;
+//     width: 100%;
+//     position: fixed;
+//     bottom: 0;
+//     z-index: 0;
+//     path {
+//         fill: rgba(135,182,194, .15);
+//     }
+// `;
 
 const PuntosArriba = styled(Puntos)`
     position: fixed;

@@ -5,7 +5,7 @@ import { Header, Titulo, ContenedorHeader } from './../elementos/Header';
 import Boton from './../elementos/Boton';
 import { Formulario, Input, ContenedorBoton } from '../elementos/ElementosDeFormulario';
 import { ReactComponent as SvgLogin } from "../imagenes/registro.svg";
-import styled, { keyframes } from "styled-components";
+import styled from 'styled-components';
 import { initializeApp } from 'firebase/app';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from "../firebase/firebaseConfig";

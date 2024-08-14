@@ -6,7 +6,7 @@ import WebFont from 'webfontloader';
 import Contenedor from './elementos/Contenedor';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import InicioSesion from './componentes/InicioSesion';
-import ListaDeGastos from './componentes/ListaDeGastos'
+import ListaDeGastos from './componentes/ListaDeGastos';
 import RegistrarUsuario from './componentes/RegistrarUsuario';
 import GastosPorCategoria from './componentes/GastosPorCategoria';
 import EditarGastos from './componentes/EditarGastos';
@@ -22,7 +22,6 @@ WebFont.load({
   }
 });
 
-
 const Index = () => {
   return (
     <>
@@ -35,46 +34,18 @@ const Index = () => {
             <Routes>
               <Route path="/iniciar-sesion" element={<InicioSesion />} />
               <Route path="/crear-cuenta" element={<RegistrarUsuario />} />
-
-              <Route path='/categorias' element={
-                <RutaProtegida>
-                  <GastosPorCategoria />
-                </RutaProtegida>
-              } />
-
-              <Route path='/lista' element={
-                <RutaProtegida>
-                  <ListaDeGastos />
-                </RutaProtegida>
-              } />
-
-              <Route path='/editar/:id' element={
-                <RutaProtegida>
-                  <EditarGastos />
-                </RutaProtegida>
-              } />
-
-              <Route path='/' element={
-                <RutaProtegida>
-                  <App />
-                </RutaProtegida>
-              } />
-
-              {/* Agrega más rutas según sea necesario */}
+              <Route path='/categorias' element={<RutaProtegida><GastosPorCategoria /></RutaProtegida>} />
+              <Route path='/lista' element={<RutaProtegida><ListaDeGastos /></RutaProtegida>} />
+              <Route path='/editar/:id' element={<RutaProtegida><EditarGastos /></RutaProtegida>} />
+              <Route path='/' element={<RutaProtegida><App /></RutaProtegida>} />
             </Routes>
           </Contenedor>
         </BrowserRouter>
       </AuthProvider>
-
       <Fondo />
     </>
-
   );
 }
 
-// Crea la raíz del documento
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-// Usa el método render para montar el componente Index
 root.render(<Index />);
-

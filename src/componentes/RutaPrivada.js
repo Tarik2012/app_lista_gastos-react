@@ -1,14 +1,15 @@
-import React from "react";
-import { useAuth } from "../contextos/AuthContext";
-import { Navigate } from "react-router-dom";
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../contextos/AuthContext';
 
 const RutaProtegida = ({ children }) => {
     const { usuario } = useAuth();
+
     if (usuario) {
-        return children
+        return children;
     } else {
-        return <Navigate replace to="/iniciar-sesion" />
+        return <Navigate replace to="/iniciar-sesion" />;
     }
-}
+};
 
 export default RutaProtegida;

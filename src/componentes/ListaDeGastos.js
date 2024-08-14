@@ -22,12 +22,12 @@ import {
     BotonCargarMas,
     ContenedorBotonCentral,
     ContenedorSubtitulo,
-    Subtitulo
+    Subtitulo,
 } from "../elementos/ListaElementos";
 import { format, fromUnixTime } from 'date-fns';
-import borrarGastos from "../firebase/borrarGasto";
+import borrarGasto from "../firebase/borrarGasto";
 
-const ListaDegastos = () => {
+const ListaDeGastos = () => {
     const [gastos, cargarMasGastos, hayMasPorCargar, cargando] = useObtenerGastos();
 
     // Convertir y formatear las fechas
@@ -85,7 +85,7 @@ const ListaDegastos = () => {
                                     <BotonAccion as={Link} to={`/editar/${gasto.id}`}>
                                         <IconoEditar />
                                     </BotonAccion>
-                                    <BotonAccion onClick={() => borrarGastos(gasto.id)}>
+                                    <BotonAccion onClick={() => borrarGasto(gasto.id)}>
                                         <IconoBorrar />
                                     </BotonAccion>
                                 </ContenedorBotones>
@@ -114,4 +114,4 @@ const ListaDegastos = () => {
     );
 }
 
-export default ListaDegastos;
+export default ListaDeGastos;

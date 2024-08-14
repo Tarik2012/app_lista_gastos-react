@@ -7,7 +7,7 @@ const filterProps = ({ primario, conIcono, iconoGrande, ...rest }) => rest;
 
 // Componente funcional para manejar el filtro de props
 const CustomComponent = React.forwardRef(({ as: Component = Link, ...props }, ref) => {
-    return <Component ref={ref} {...filterProps(props)} />;
+  return <Component ref={ref} {...filterProps(props)} />;
 });
 
 const Boton = styled(CustomComponent)`

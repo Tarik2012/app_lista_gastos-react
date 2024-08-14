@@ -1,11 +1,10 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { Header, Titulo, ContenedorHeader, ContenedorBotones } from './elementos/Header'
+import { Header, Titulo, ContenedorHeader, ContenedorBotones } from './elementos/Header';
 import Boton from "./elementos/Boton";
-import BotnCerrarSesion from "./elementos/BotonCerrarSesion";
+import BotonCerrarSesion from "./elementos/BotonCerrarSesion";
 import FormularioGasto from "./componentes/FormularioGasto";
 import BarraTotalGastado from "./componentes/BarraTotalGastado";
-
 
 const App = () => {
   return (
@@ -15,13 +14,12 @@ const App = () => {
       </Helmet>
 
       <Header>
-
         <ContenedorHeader>
           <Titulo>Agregar Gastos</Titulo>
           <ContenedorBotones>
-            <Boton to="/categorias">Categorias </Boton>
-            <Boton to="/lista">Lista Gastos</Boton>
-            <BotnCerrarSesion />
+            <Boton to="/categorias">Categorias</Boton>
+            <Boton to="/">Lista Gastos</Boton>
+            <BotonCerrarSesion />
           </ContenedorBotones>
         </ContenedorHeader>
       </Header>

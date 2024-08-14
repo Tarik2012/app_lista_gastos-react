@@ -9,10 +9,18 @@ import useObtenerGasto from "../hooks/useObtenerGasto";
 
 const EditarGastos = () => {
     const { id } = useParams();
-    const [gasto] = useObtenerGasto(id);
+    const [gasto, cargando, error] = useObtenerGasto(id);
+
+    if (cargando) {
+        return <p>Cargando...</p>; // Mostrar un mensaje de carga o spinner mientras se obtiene el gasto
+    }
+
+    if (error) {
+        return <p>Error al cargar el gasto: {error.message}</p>; // Mostrar mensaje de error si ocurre un error
+    }
 
     if (!gasto) {
-        return <p>Cargando...</p>; // Mostrar un mensaje de carga o spinner mientras se obtiene el gasto
+        return <p>No se encontró el gasto</p>; // Mostrar mensaje si no se encuentra el gasto
     }
 
     return (

@@ -1,6 +1,6 @@
-
 import styled, { keyframes } from "styled-components";
 
+// Definición de la animación slideInFromTop
 const slideInFromTop = keyframes`
     0% {
         transform: translateY(-100%);
@@ -10,7 +10,7 @@ const slideInFromTop = keyframes`
     }
 `;
 
-// Define los estilos mejorados y animación para el mensaje de error
+// Definición de los estilos para el mensaje de error
 const MensajeError = styled.p`
     color: #d9534f; /* Rojo */
     font-size: 1.5rem; /* Tamaño de fuente más grande */
@@ -24,7 +24,7 @@ const MensajeError = styled.p`
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
     z-index: 999; /* Coloca el mensaje por encima de otros elementos */
+    animation: ${slideInFromTop} 0.5s ease-out; /* Aplica la animación */
 `;
 
-
-export default MensajeError
+export default MensajeError;
