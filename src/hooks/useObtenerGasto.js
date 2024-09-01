@@ -13,14 +13,10 @@ const useObtenerGasto = (id) => {
         const obtenerGasto = async () => {
             console.log("useObtenerGasto ID:", id); // Depuración
 
-            if (!id || typeof id !== 'string') {
-                console.error("ID no proporcionado o no es válido.");
-                setError("ID no proporcionado o no es válido.");
+            if (!id) {
                 setCargando(false);
-                navigate('/lista');
                 return;
             }
-
             try {
                 const docRef = doc(db, 'gastos', id);
                 const documento = await getDoc(docRef);

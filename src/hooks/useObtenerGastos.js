@@ -10,6 +10,8 @@ const useObtenerGastos = () => {
     const [hayMasPorCargar, cambiarHayMasPorCargar] = useState(false);
 
     const obtenerMasGastos = () => {
+        if (!usuario || !ultimoGasto) return;
+
         const consulta = query(
             collection(db, 'gastos'),
             where('uidUsuario', '==', usuario.uid),
@@ -22,16 +24,26 @@ const useObtenerGastos = () => {
             if (snapshot.docs.length > 0) {
                 cambiarUltimoGasto(snapshot.docs[snapshot.docs.length - 1]);
 
-                cambiarGastos(gastos.concat(snapshot.docs.map((gasto) => {
-                    return { ...gasto.data(), id: gasto.id }
-                })))
+                cambiarGastos(prevGastos => [
+                    ...prevGastos,
+                    ...snapshot.docs.map((gasto) => {
+                        return { ...gasto.data(), id: gasto.id }
+                    })
+                ]);
             } else {
                 cambiarHayMasPorCargar(false);
             }
-        }, error => { console.log(error) });
+        }, error => {
+            console.error("Error al obtener más gastos:", error);
+        });
     }
 
     useEffect(() => {
+        if (!usuario) {
+            console.error("Usuario no autenticado o no disponible.");
+            return;
+        }
+
         const consulta = query(
             collection(db, 'gastos'),
             where('uidUsuario', '==', usuario.uid),
@@ -50,9 +62,11 @@ const useObtenerGastos = () => {
             cambiarGastos(snapshot.docs.map((gasto) => {
                 return { ...gasto.data(), id: gasto.id }
             }));
+        }, error => {
+            console.error("Error al obtener los gastos:", error);
         });
 
-        return unsuscribe;
+        return () => unsuscribe();
     }, [usuario]);
 
     return [gastos, obtenerMasGastos, hayMasPorCargar];

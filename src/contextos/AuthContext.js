@@ -12,15 +12,17 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const cancelarSuscripcion = onAuthStateChanged(auth, (usuario) => {
+            console.log("Usuario autenticado:", usuario);
             cambiarUsuario(usuario);
             cambiarCargando(false);
         });
-        return cancelarSuscripcion;
+
+        return () => cancelarSuscripcion();
     }, []);
 
     return (
-        <AuthContext.Provider value={{ usuario }}>
-            {!cargando && children}
+        <AuthContext.Provider value={{ usuario, cargando }}>
+            {!cargando ? children : <p>Cargando...</p>}
         </AuthContext.Provider>
     );
 }

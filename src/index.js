@@ -14,7 +14,8 @@ import { Helmet } from 'react-helmet';
 import favicon from './imagenes/logo.png';
 import Fondo from './elementos/Fondo';
 import { AuthProvider } from './contextos/AuthContext';
-import RutaProtegida from './componentes/RutaPrivada';
+import RutaProtegida from './componentes/RutaProtegida';
+
 
 WebFont.load({
   google: {
@@ -36,7 +37,7 @@ const Index = () => {
               <Route path="/crear-cuenta" element={<RegistrarUsuario />} />
               <Route path='/categorias' element={<RutaProtegida><GastosPorCategoria /></RutaProtegida>} />
               <Route path='/lista' element={<RutaProtegida><ListaDeGastos /></RutaProtegida>} />
-              <Route path='/editar/:id' element={<RutaProtegida><EditarGastos /></RutaProtegida>} />
+              <Route path="/editar/:id" element={<RutaProtegida><EditarGastos /></RutaProtegida>} />
               <Route path='/' element={<RutaProtegida><App /></RutaProtegida>} />
             </Routes>
           </Contenedor>

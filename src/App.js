@@ -18,7 +18,7 @@ const App = () => {
           <Titulo>Agregar Gastos</Titulo>
           <ContenedorBotones>
             <Boton to="/categorias">Categorias</Boton>
-            <Boton to="/">Lista Gastos</Boton>
+            <Boton to="/lista">Lista Gastos</Boton>
             <BotonCerrarSesion />
           </ContenedorBotones>
         </ContenedorHeader>
