@@ -24,7 +24,7 @@ import {
     ContenedorSubtitulo,
     Subtitulo,
 } from "../elementos/ListaElementos";
-import { format, fromUnixTime } from 'date-fns';
+import { format, fromUnixTime, isValid } from 'date-fns';
 import borrarGasto from "../firebase/borrarGasto";
 
 const ListaDeGastos = () => {
@@ -32,9 +32,16 @@ const ListaDeGastos = () => {
 
     // Convertir y formatear las fechas
     const gastosConFechaFormateada = gastos.map(gasto => {
+        const fechaUnix = gasto.fecha;
+
+        // Verificamos si la fecha es válida antes de convertirla
+        const fechaFormateada = isValid(new Date(fechaUnix * 1000))
+            ? format(fromUnixTime(fechaUnix), 'dd/MM/yyyy')
+            : 'Fecha inválida';
+
         return {
             ...gasto,
-            fechaFormateada: format(fromUnixTime(gasto.fecha), 'dd/MM/yyyy')
+            fechaFormateada
         };
     });
 
