@@ -15,6 +15,7 @@ import favicon from './imagenes/logo.png';
 import Fondo from './elementos/Fondo';
 import { AuthProvider } from './contextos/AuthContext';
 import RutaProtegida from './componentes/RutaProtegida';
+import { TotalGastadoProvider } from './contextos/TotalGastadoEnMesContext'
 
 
 WebFont.load({
@@ -30,18 +31,20 @@ const Index = () => {
         <link rel="shortcut icon" href={favicon} type="image/x-icon" />
       </Helmet>
       <AuthProvider>
-        <BrowserRouter>
-          <Contenedor>
-            <Routes>
-              <Route path="/iniciar-sesion" element={<InicioSesion />} />
-              <Route path="/crear-cuenta" element={<RegistrarUsuario />} />
-              <Route path='/categorias' element={<RutaProtegida><GastosPorCategoria /></RutaProtegida>} />
-              <Route path='/lista' element={<RutaProtegida><ListaDeGastos /></RutaProtegida>} />
-              <Route path="/editar/:id" element={<RutaProtegida><EditarGastos /></RutaProtegida>} />
-              <Route path='/' element={<RutaProtegida><App /></RutaProtegida>} />
-            </Routes>
-          </Contenedor>
-        </BrowserRouter>
+        <TotalGastadoProvider>
+          <BrowserRouter>
+            <Contenedor>
+              <Routes>
+                <Route path="/iniciar-sesion" element={<InicioSesion />} />
+                <Route path="/crear-cuenta" element={<RegistrarUsuario />} />
+                <Route path='/categorias' element={<RutaProtegida><GastosPorCategoria /></RutaProtegida>} />
+                <Route path='/lista' element={<RutaProtegida><ListaDeGastos /></RutaProtegida>} />
+                <Route path="/editar/:id" element={<RutaProtegida><EditarGastos /></RutaProtegida>} />
+                <Route path='/' element={<RutaProtegida><App /></RutaProtegida>} />
+              </Routes>
+            </Contenedor>
+          </BrowserRouter>
+        </TotalGastadoProvider>
       </AuthProvider>
       <Fondo />
     </>
